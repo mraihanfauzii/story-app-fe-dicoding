@@ -1,9 +1,9 @@
-// CSS imports
 import '../styles/styles.css';
-
 import App from './pages/app';
+import '../sass/main.scss';
 
 document.addEventListener('DOMContentLoaded', async () => {
+  console.log('App Initialized');
   const app = new App({
     content: document.querySelector('#main-content'),
     drawerButton: document.querySelector('#drawer-button'),
