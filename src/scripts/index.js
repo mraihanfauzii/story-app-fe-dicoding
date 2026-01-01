@@ -1,17 +1,23 @@
 import '../styles/styles.css';
-import App from './pages/app';
 import '../sass/main.scss';
 
-document.addEventListener('DOMContentLoaded', async () => {
-  console.log('App Initialized');
+import './components/nav-bar';
+import './components/footer-bar';
+import './components/story-card';
+import './components/modal-loading';
+
+import App from './pages/app';
+
+document.addEventListener('DOMContentLoaded', () => {
   const app = new App({
     content: document.querySelector('#main-content'),
-    drawerButton: document.querySelector('#drawer-button'),
-    navigationDrawer: document.querySelector('#navigation-drawer'),
+    header: document.querySelector('#header-content'),
+    footer: document.querySelector('#footer-content'),
   });
-  await app.renderPage();
+  
+  app.renderPage();
 
-  window.addEventListener('hashchange', async () => {
-    await app.renderPage();
+  window.addEventListener('hashchange', () => {
+    app.renderPage();
   });
 });
