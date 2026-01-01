@@ -1,45 +1,45 @@
 import routes from '../routes/routes';
 import { getActiveRoute } from '../routes/url-parser';
+import DrawerInitiator from '../utils/drawer-initiator';
+import UrlParser from '../routes/url-parser';
+import routes from '../routes/routes';
 
 class App {
-  #content = null;
-  #drawerButton = null;
-  #navigationDrawer = null;
+  constructor({ content, header, footer }) {
+    this._content = content;
+    this._header = header;
+    this._footer = footer;
 
-  constructor({ navigationDrawer, drawerButton, content }) {
-    this.#content = content;
-    this.#drawerButton = drawerButton;
-    this.#navigationDrawer = navigationDrawer;
-
-    this.#setupDrawer();
+    this._initialAppShell();
   }
 
-  #setupDrawer() {
-    this.#drawerButton.addEventListener('click', () => {
-      this.#navigationDrawer.classList.toggle('open');
-    });
-
-    document.body.addEventListener('click', (event) => {
-      if (
-        !this.#navigationDrawer.contains(event.target) &&
-        !this.#drawerButton.contains(event.target)
-      ) {
-        this.#navigationDrawer.classList.remove('open');
-      }
-
-      this.#navigationDrawer.querySelectorAll('a').forEach((link) => {
-        if (link.contains(event.target)) {
-          this.#navigationDrawer.classList.remove('open');
-        }
-      });
-    });
-  }
+  _initialAppShell() {}
 
   async renderPage() {
-    const url = getActiveRoute();
+    const url = UrlParser.parseActiveUrlWithCombiner();
     const page = routes[url];
 
-    this.#content.innerHTML = await page.render();
+    if (!page) {
+      this._content.innerHTML = '<h2>Halaman tidak ditemukan</h2>';
+      return;
+    }
+
+    this._content.innerHTML = await page.render();
+    
+    const navBar = document.querySelector('nav-bar');
+    if (navBar) {
+      const hamburgerButton = navBar.querySelector('#hamburger');
+      const drawerMenu = navBar.querySelector('#drawer');
+      
+      if (hamburgerButton && drawerMenu) {
+        DrawerInitiator.init({
+          button: hamburgerButton,
+          drawer: drawerMenu,
+          content: this._content,
+        });
+      }
+    }
+
     await page.afterRender();
   }
 }
