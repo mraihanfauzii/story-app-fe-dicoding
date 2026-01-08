@@ -1,0 +1,105 @@
+@use '../utils/variables' as var;
+@use '../utils/mixins' as mix;
+
+.navbar {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var.$primary-color;
+  padding: 10px;
+}
+
+/* Hamburger Button */
+.navbar-toggler {
+  font-size: 28px;
+  background: none;
+  border: none;
+  color: var.$secondary-color;
+  padding: 10px;
+  cursor: pointer;
+  display: block;
+
+  @include mix.responsive('tablet') {
+    display: none;
+  }
+}
+
+/* Menu Navigasi */
+.navbar-menu {
+  position: fixed;
+  width: 250px;
+  height: 100vh;
+  top: 0;
+  left: -250px; /* Sembunyi di kiri */
+  background-color: white;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease-in-out;
+  padding-top: 60px;
+  z-index: 999;
+
+  &.open {
+    transform: translateX(250px); /* Geser masuk */
+  }
+
+  @include mix.responsive('tablet') {
+    position: static;
+    width: auto;
+    height: auto;
+    background: transparent;
+    box-shadow: none;
+    transform: none;
+    padding-top: 0;
+  }
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+
+  @include mix.responsive('tablet') {
+    flex-direction: row;
+    gap: 20px;
+  }
+}
+
+.nav-item {
+  width: 100%;
+}
+
+.nav-link {
+  display: block;
+  padding: 15px 20px;
+  color: var.$text-color;
+  font-weight: 500;
+  
+  &:hover {
+    color: var.$primary-color;
+    background-color: rgba(0,0,0,0.05);
+  }
+
+  @include mix.responsive('tablet') {
+    padding: 10px;
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}
+
+.btn-logout {
+  color: var.$danger-color;
+}

@@ -16,10 +16,20 @@ class StoryCard extends HTMLElement {
     return this.#story;
   }
 
+  connectedCallback() {
+    this.addEventListener('click', () => {
+      if (this.#story) {
+        window.location.hash = `#/stories/${this.#story.id}`;
+      }
+    });
+    
+    this.style.cursor = 'pointer';
+  }
+
   render() {
     if (!this.#story) return;
 
-    const { name, photoUrl, description, createdAt } = this.#story;
+    const { id, name, photoUrl, description, createdAt } = this.#story;
 
     this.innerHTML = `
       <div class="card h-100">
@@ -32,9 +42,11 @@ class StoryCard extends HTMLElement {
           >
         </div>
         <div class="card-body">
-          <h3 class="card-title">${name}</h3>
+          <h3 class="card-title">
+            ${name}
+          </h3>
           <p class="card-date">${showFormattedDate(createdAt)}</p>
-          <p class="card-description">${description}</p>
+          <p class="card-description">${description.substring(0, 100)}</p>
         </div>
       </div>
     `;

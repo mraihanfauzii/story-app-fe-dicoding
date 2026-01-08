@@ -1,7 +1,7 @@
-import Stories from '../../../network/stories';
-import StorageHelper from '../../../utils/storage-helper';
-import MapHelper from '../../../utils/map-helper';
-import { showFormattedDate } from '../../../utils/date-helper';
+import Stories from '../../network/stories';
+import StorageHelper from '../../utils/storage-helper';
+import MapHelper from '../../utils/map-helper';
+import { showFormattedDate } from '../../utils/date-helper';
 
 const Dashboard = {
   async render() {
@@ -19,7 +19,7 @@ const Dashboard = {
   async afterRender() {
     const token = StorageHelper.getToken();
     if (!token) {
-      window.location.hash = '#/auth/login';
+      window.location.hash = '#/login';
       return;
     }
 

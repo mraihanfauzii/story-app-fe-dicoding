@@ -1,0 +1,13 @@
+@use '../utils/variables' as var;
+
+footer {
+  background-color: var.$secondary-color;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  margin-top: auto; /* Agar footer selalu di bawah */
+}
+
+.footer-content {
+  font-size: 0.9rem;
+}

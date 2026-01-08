@@ -1,2 +1,4 @@
 APP_URL=<url_aplikasi>
-MAP_SERVICE_API_KEY=<api_key>
+MAP_SERVICE_API_KEY --> tidak menggunakan api key karena menggunakan layanan gratis pada library Leaflet.js 
+dengan sumber map OpenStreetMap yang gratis dan opensource berbeda dengan google map yang berbayar dan
+mewajibkan apikey

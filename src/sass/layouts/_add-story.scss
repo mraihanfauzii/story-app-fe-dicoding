@@ -1,0 +1,49 @@
+.story-form {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.image-preview-container {
+  width: 100%;
+  height: 300px;
+  background: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 2px dashed #ccc;
+
+  img, video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.camera-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+  align-items: center;
+
+  .divider {
+    font-weight: bold;
+    color: #888;
+  }
+}
+
+.d-none {
+  display: none !important;
+}
+
+.small-text {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 5px;
+}

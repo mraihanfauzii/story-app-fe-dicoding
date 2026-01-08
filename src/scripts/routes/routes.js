@@ -1,14 +1,15 @@
-import Dashboard from '../views/pages/stories/dashboard';
-
-const Login = { async render() { return '<h1>Login Page</h1>'; }, async afterRender() {} };
-const Register = { async render() { return '<h1>Register Page</h1>'; }, async afterRender() {} };
-const AddStory = { async render() { return '<h1>Add Story</h1>'; }, async afterRender() {} };
+import Login from '../pages/auth/login';
+import Register from '../pages/auth/register';
+import Dashboard from '../pages/stories/dashboard';
+import AddStory from '../pages/stories/add-story';
+import DetailStory from '../pages/stories/detail';
 
 const routes = {
-  '/': new Dashboard(),
-  '/auth/login': Login,
-  '/auth/register': Register,
-  '/stories/add': AddStory,
+  '/': Dashboard,
+  '/login': Login,
+  '/register': Register,
+  '/add': AddStory,
+  '/stories/:id': DetailStory,
 };
 
 export default routes;

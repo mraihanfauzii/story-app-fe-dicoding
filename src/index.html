@@ -1,24 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
   <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="/favicon.png" />
-    <meta name="description" content="Dicoding Story App - Share your story with the world" />
+    <link rel="icon" href="/favicon.png" />
     <title>Story App</title>
-
-    <script type="module" src="/scripts/index.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
   </head>
   <body>
     <a href="#main-content" class="skip-link">Menuju ke konten utama</a>
+
     <header>
-      <div id="header-content"></div>
+      <nav-bar></nav-bar>
     </header>
 
-    <main id="main-content" class="main-content"></main>
+    <main id="main-content"></main>
+    
+    <modal-loading></modal-loading>
 
     <footer>
-      <div id="footer-content"></div>
+      <footer-bar></footer-bar>
     </footer>
+
+    <script type="module" src="/scripts/index.js"></script>
   </body>
 </html>

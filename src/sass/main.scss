@@ -2,7 +2,15 @@
 @use 'utils/mixins';
 
 @use 'base/reset';
+
+@use 'components/navbar';
+@use 'components/footer';
+@use 'components/card';
+@use 'components/loading';
+
+@use 'layouts/auth';
 @use 'layouts/dashboard';
+@use 'layouts/add-story';
 
 .container {
   padding: 16px;

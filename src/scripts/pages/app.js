@@ -1,15 +1,10 @@
-import routes from '../routes/routes';
-import { getActiveRoute } from '../routes/url-parser';
 import DrawerInitiator from '../utils/drawer-initiator';
 import UrlParser from '../routes/url-parser';
 import routes from '../routes/routes';
 
 class App {
-  constructor({ content, header, footer }) {
+  constructor({ content }) {
     this._content = content;
-    this._header = header;
-    this._footer = footer;
-
     this._initialAppShell();
   }
 
@@ -19,6 +14,11 @@ class App {
     const url = UrlParser.parseActiveUrlWithCombiner();
     const page = routes[url];
 
+    const navBar = document.querySelector('nav-bar');
+    if (navBar) {
+      navBar.render(); 
+    }
+
     if (!page) {
       this._content.innerHTML = '<h2>Halaman tidak ditemukan</h2>';
       return;
@@ -26,10 +26,16 @@ class App {
 
     this._content.innerHTML = await page.render();
     
+    this._initDrawer();
+
+    await page.afterRender();
+  }
+
+  _initDrawer() {
     const navBar = document.querySelector('nav-bar');
     if (navBar) {
-      const hamburgerButton = navBar.querySelector('#hamburger');
-      const drawerMenu = navBar.querySelector('#drawer');
+      const hamburgerButton = document.querySelector('#hamburger');
+      const drawerMenu = document.querySelector('#drawer');
       
       if (hamburgerButton && drawerMenu) {
         DrawerInitiator.init({
@@ -39,8 +45,6 @@ class App {
         });
       }
     }
-
-    await page.afterRender();
   }
 }
 
