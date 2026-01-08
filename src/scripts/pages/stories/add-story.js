@@ -6,7 +6,7 @@ const AddStory = {
   async render() {
     return `
       <div class="content-container">
-        <h2 class="content-title">Tambah Cerita Baru</h2>
+        <h1 class="content-title">Tambah Cerita Baru</h1>
         
         <form id="addStoryForm" class="story-form">
           <div class="image-preview-container">

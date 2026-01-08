@@ -42,9 +42,9 @@ class StoryCard extends HTMLElement {
           >
         </div>
         <div class="card-body">
-          <h3 class="card-title">
+          <h2 class="card-title">
             ${name}
-          </h3>
+          </h2>
           <p class="card-date">${showFormattedDate(createdAt)}</p>
           <p class="card-description">${description.substring(0, 100)}</p>
         </div>

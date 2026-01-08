@@ -4,7 +4,7 @@ const Register = {
   async render() {
     return `
       <div class="auth-container">
-        <h2 class="auth-title">Daftar Akun Baru</h2>
+        <h1 class="auth-title">Daftar Akun Baru</h1>
         <form id="registerForm" class="auth-form">
           <div class="form-group">
             <label for="name">Nama Lengkap</label>

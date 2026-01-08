@@ -14,21 +14,40 @@ class App {
     const url = UrlParser.parseActiveUrlWithCombiner();
     const page = routes[url];
 
+    // Update Navbar (Login/Logout state)
     const navBar = document.querySelector('nav-bar');
     if (navBar) {
       navBar.render(); 
     }
 
+    // Cek Halaman 404
     if (!page) {
       this._content.innerHTML = '<h2>Halaman tidak ditemukan</h2>';
       return;
     }
 
+    if (!document.startViewTransition) {
+      // Jika tidak mendukung : Langsung render seperti biasa
+      await this._updateContent(page);
+    } else {
+      // Jika mendukung : Bungkus proses render dengan animasi
+      document.startViewTransition(async () => {
+        await this._updateContent(page);
+      });
+    }
+  }
+
+  async _updateContent(page) {
     this._content.innerHTML = await page.render();
-    
+  
     this._initDrawer();
 
     await page.afterRender();
+
+    const mainContent = document.querySelector('#main-content');
+    if (mainContent) {
+      mainContent.focus();
+    }
   }
 
   _initDrawer() {

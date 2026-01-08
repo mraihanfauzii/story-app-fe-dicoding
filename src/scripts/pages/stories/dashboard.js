@@ -7,7 +7,7 @@ const Dashboard = {
   async render() {
     return `
       <div class="content-container">
-        <h2 class="content-title">Daftar Cerita</h2>
+        <h1 class="content-title">Daftar Cerita</h1>
         
         <div id="map-container" class="map-view"></div>
 

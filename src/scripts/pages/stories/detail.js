@@ -30,7 +30,7 @@ const DetailStory = {
       // Render HTML Detail
       container.innerHTML = `
         <div class="detail-header">
-          <h2 class="detail-name">${story.name}</h2>
+          <h1 class="detail-name">${story.name}</h1>
           <p class="detail-date">${showFormattedDate(story.createdAt)}</p>
         </div>
         

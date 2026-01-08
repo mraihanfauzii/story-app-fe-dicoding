@@ -40,3 +40,28 @@
     top: 0;
   }
 }
+
+// === VIEW TRANSITION API STYLES ===
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.3s; /* Durasi animasi */
+}
+
+/* Animasi Fade In/Out Sederhana */
+::view-transition-old(root) {
+  animation-name: fadeOut;
+}
+
+::view-transition-new(root) {
+  animation-name: fadeIn;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
