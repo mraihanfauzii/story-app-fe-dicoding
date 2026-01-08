@@ -8,7 +8,20 @@ class App {
     this._initialAppShell();
   }
 
-  _initialAppShell() {}
+  _initialAppShell() {
+    // Cegah default navigation hash saat skip link diklik
+    const skipLinkElem = document.querySelector('.skip-link');
+    if (skipLinkElem) {
+      skipLinkElem.addEventListener('click', (event) => {
+        event.preventDefault(); // Mencegah browser ubah URL jadi /#main-content
+        const mainContent = document.querySelector('#main-content');
+        if (mainContent) {
+          mainContent.focus(); // Langsung fokus ke konten
+          mainContent.scrollIntoView({ behavior: 'smooth' }); // scroll halus
+        }
+      });
+    }
+  }
 
   async renderPage() {
     const url = UrlParser.parseActiveUrlWithCombiner();
@@ -39,9 +52,7 @@ class App {
 
   async _updateContent(page) {
     this._content.innerHTML = await page.render();
-  
     this._initDrawer();
-
     await page.afterRender();
 
     const mainContent = document.querySelector('#main-content');

@@ -21,7 +21,10 @@ const AddStory = {
             
             <span class="divider">ATAU</span>
             
-            <input type="file" id="fileInput" accept="image/*" class="file-input">
+            <div class="file-input-wrapper">
+              <label for="fileInput" class="file-label">Pilih dari Galeri</label>
+              <input type="file" id="fileInput" accept="image/*" class="file-input">
+            </div>
           </div>
 
           <div class="form-group">

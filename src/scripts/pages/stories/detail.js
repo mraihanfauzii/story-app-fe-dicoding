@@ -39,12 +39,12 @@ const DetailStory = {
         </div>
         
         <div class="detail-body">
-          <h3>Deskripsi</h3>
+          <h2>Deskripsi</h2>
           <p>${story.description}</p>
         </div>
 
         <div class="detail-map">
-          <h3>Lokasi Pengambilan</h3>
+          <h2>Lokasi Pengambilan</h2>
           <div id="map-detail" style="height: 300px; width: 100%; border-radius: 8px;"></div>
         </div>
       `;
