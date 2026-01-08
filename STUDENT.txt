@@ -1,4 +1,3 @@
-APP_URL=<url_aplikasi>
-MAP_SERVICE_API_KEY --> tidak menggunakan api key karena menggunakan layanan gratis pada library Leaflet.js 
-dengan sumber map OpenStreetMap yang gratis dan opensource berbeda dengan google map yang berbayar dan
-mewajibkan apikey
+APP_URL=https://story-app-fe-dicoding.vercel.app/
+MAP_SERVICE_API_KEY --> Tidak diperlukan. Aplikasi menggunakan library Leaflet.js dengan Tile Layer OpenStreetMap yang bersifat open-source dan gratis, 
+sehingga tidak memerlukan API Key seperti Google Maps.
