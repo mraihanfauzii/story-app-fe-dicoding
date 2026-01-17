@@ -5,6 +5,7 @@ import routes from '../routes/routes';
 class App {
   constructor({ content }) {
     this._content = content;
+    this._activePage = null;
     this._initialAppShell();
   }
 
@@ -26,6 +27,13 @@ class App {
   async renderPage() {
     const url = UrlParser.parseActiveUrlWithCombiner();
     const page = routes[url];
+
+    // Jika ada halaman yang sedang aktif dan memiliki method unmount, jalankan dulu.
+    if (this._activePage && this._activePage.unmount) {
+      await this._activePage.unmount();
+    }
+
+    this._activePage = page;
 
     // Update Navbar (Login/Logout state)
     const navBar = document.querySelector('nav-bar');
