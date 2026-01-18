@@ -1,12 +1,12 @@
 import CameraHelper from '../../utils/camera-helper';
 import StorageHelper from '../../utils/storage-helper';
+import DBHelper from '../../utils/db-helper';
 
 class AddStoryPresenter {
   constructor({ view, model }) {
     this._view = view;
     this._model = model;
     
-    // State Internal
     this._currentStream = null;
     this._currentFile = null;
     this._locationData = { lat: null, lon: null };
@@ -14,7 +14,6 @@ class AddStoryPresenter {
   }
 
   init() {
-    // 1. Cek Login
     const token = StorageHelper.getToken();
     if (!token) {
       alert('Anda harus login terlebih dahulu.');
@@ -22,12 +21,10 @@ class AddStoryPresenter {
       return;
     }
 
-    // 2. Setup Map
     this._view.initMapPicker((location) => {
       this._locationData = location;
     });
 
-    // 3. Setup Events
     this._bindCameraEvents();
     this._bindFileEvents();
     this._bindSubmitEvent();
@@ -92,18 +89,36 @@ class AddStoryPresenter {
       if (loading) loading.show();
 
       try {
-        const formData = new FormData();
-        formData.append('description', description);
-        formData.append('photo', this._currentFile);
-        
-        if (this._locationData.lat) {
-          formData.append('lat', this._locationData.lat);
-          formData.append('lon', this._locationData.lon);
+        // --- LOGIC UNTUK OFFLINE/ONLINE ---
+        if (!navigator.onLine) {
+            // JIKA OFFLINE: Simpan ke IndexedDB
+            const storyData = {
+                description: description,
+                photo: this._currentFile,
+                lat: this._locationData.lat,
+                lon: this._locationData.lon,
+                createdAt: new Date().toISOString()
+            };
+
+            await DBHelper.addStory(storyData);
+            alert('Anda sedang Offline. Cerita disimpan dan akan dikirim otomatis saat Online.');
+            window.location.hash = '#/';
+        } else {
+            // JIKA ONLINE: Kirim langsung ke API
+            const formData = new FormData();
+            formData.append('description', description);
+            formData.append('photo', this._currentFile);
+            
+            if (this._locationData.lat) {
+              formData.append('lat', this._locationData.lat);
+              formData.append('lon', this._locationData.lon);
+            }
+    
+            await this._model.addStory(formData);
+            alert('Cerita berhasil diupload!');
+            window.location.hash = '#/';
         }
 
-        await this._model.addStory(formData);
-        alert('Cerita berhasil diupload!');
-        window.location.hash = '#/';
       } catch (error) {
         alert(error.message);
       } finally {
@@ -119,7 +134,6 @@ class AddStoryPresenter {
     }
     this._isCameraActive = false;
     
-    // Kembalikan UI ke mode preview (gunakan placeholder jika file kosong)
     const url = this._currentFile 
       ? URL.createObjectURL(this._currentFile)
       : 'https://media.istockphoto.com/id/1222357475/vector/image-preview-icon-picture-placeholder-for-website-or-ui-ux-design-vector-illustration.jpg?s=612x612&w=0&k=20&c=KuCo-dRBYV7nz2gbk4J9w1WtTAgpTdznHu55W9FjimE=';
