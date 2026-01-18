@@ -3,7 +3,7 @@ import { resolve } from 'path';
 import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
-  base: '/story-app-fe-dicoding', 
+  base: '/story-app-fe-dicoding/', 
 
   root: resolve(__dirname, 'src'),
   publicDir: resolve(__dirname, 'src/public'), 
@@ -24,6 +24,7 @@ export default defineConfig({
       srcDir: '.', 
       filename: 'sw.js', 
       registerType: 'autoUpdate',
+      injectRegister: null, 
       devOptions: {
         enabled: true,
         type: 'module',
@@ -36,7 +37,7 @@ export default defineConfig({
         background_color: '#ffffff',
         display: 'standalone',
         orientation: 'portrait',
-        start_url: '.',
+        start_url: './index.html',
         icons: [
           {
             src: 'images/icon-192x192.png',
