@@ -18,6 +18,7 @@ class NavBar extends HTMLElement {
       // TAMPILAN JIKA SUDAH LOGIN
       navigationLinks = `
         <li class="nav-item"><a href="#/" class="nav-link">Dashboard</a></li>
+        <li class="nav-item"><a href="#/favorite" class="nav-link">Favorit</a></li>
         <li class="nav-item"><a href="#/add" class="nav-link">Tambah Cerita</a></li>
         <li class="nav-item"><a href="#" id="logout-btn" class="nav-link btn-logout">Logout</a></li>
       `;

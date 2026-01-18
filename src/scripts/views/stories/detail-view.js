@@ -25,6 +25,7 @@ class DetailView {
         <img src="${story.photoUrl}" alt="Foto ${story.name}" class="detail-image">
       </div>
       
+      <div id="likeButtonContainer" class="like-btn-container"></div>
       <div class="detail-body">
         <h2>Deskripsi</h2>
         <p>${story.description}</p>
@@ -40,7 +41,6 @@ class DetailView {
     if (story.lat && story.lon) {
       MapHelper.init('map-detail', [story.lat, story.lon], 13);
       
-      // Menggunakan [lat, lon] sesuai perbaikan map-helper
       MapHelper.addMarker(
         [story.lat, story.lon], 
         {
@@ -51,6 +51,22 @@ class DetailView {
     } else {
       document.querySelector('.detail-map').innerHTML = '<p>Lokasi tidak tersedia untuk cerita ini.</p>';
     }
+  }
+
+  getLikeButtonTemplate() {
+    return `
+      <button aria-label="Simpan Cerita" id="likeButton" class="btn btn-outline">
+         🤍 Simpan Cerita (Tersedia Offline)
+      </button>
+    `;
+  }
+
+  getLikedButtonTemplate() {
+    return `
+      <button aria-label="Hapus Simpanan" id="likedButton" class="btn btn-primary">
+         ❤️ Disimpan (Hapus)
+      </button>
+    `;
   }
 
   showError(message) {

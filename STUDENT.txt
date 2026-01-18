@@ -1,3 +1,3 @@
-APP_URL=https://story-app-fe-dicoding.vercel.app/
+APP_URL=https://mraihanfauzii.github.io/story-app-fe-dicoding/
 MAP_SERVICE_API_KEY --> Tidak diperlukan. Aplikasi menggunakan library Leaflet.js dengan Tile Layer OpenStreetMap yang bersifat open-source dan gratis, 
 sehingga tidak memerlukan API Key seperti Google Maps.
