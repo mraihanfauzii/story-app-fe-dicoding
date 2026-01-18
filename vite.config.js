@@ -4,7 +4,8 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
   root: resolve(__dirname, 'src'),
-  publicDir: resolve(__dirname, 'public'),
+  publicDir: resolve(__dirname, 'src/public'), 
+  
   build: {
     outDir: resolve(__dirname, '../dist'),
     emptyOutDir: true,
@@ -15,15 +16,15 @@ export default defineConfig({
     },
   },
 
-  // PLUGIN PWA
   plugins: [
     VitePWA({
       strategies: 'injectManifest',
-      srcDir: '.',
-      filename: 'sw.js',
+      srcDir: '.', 
+      filename: 'sw.js', 
       registerType: 'autoUpdate',
       devOptions: {
-        enabled: true 
+        enabled: true,
+        type: 'module',
       },
       manifest: {
         name: 'Dicoding Story App',

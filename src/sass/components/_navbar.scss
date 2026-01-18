@@ -5,8 +5,11 @@
   background-color: white;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   padding: 10px 0;
-  position: sticky;
+  
+  position: fixed; 
   top: 0;
+  left: 0;
+  width: 100%;
   z-index: 1000;
 }
 
@@ -14,6 +17,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 20px; 
 }
 
 .navbar-brand {
@@ -23,7 +27,6 @@
   padding: 10px;
 }
 
-/* Hamburger Button */
 .navbar-toggler {
   font-size: 28px;
   background: none;
@@ -38,13 +41,12 @@
   }
 }
 
-/* Menu Navigasi */
 .navbar-menu {
   position: fixed;
   width: 250px;
   height: 100vh;
   top: 0;
-  left: -250px; /* Sembunyi di kiri */
+  left: -250px; 
   background-color: white;
   box-shadow: 2px 0 5px rgba(0,0,0,0.2);
   transition: transform 0.3s ease-in-out;
@@ -52,7 +54,7 @@
   z-index: 999;
 
   &.open {
-    transform: translateX(250px); /* Geser masuk */
+    transform: translateX(250px);
   }
 
   @include mix.responsive('tablet') {

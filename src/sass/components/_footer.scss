@@ -5,9 +5,51 @@ footer {
   color: white;
   padding: 20px;
   text-align: center;
-  margin-top: auto; /* Agar footer selalu di bawah */
+  margin-top: auto; 
 }
 
 .footer-content {
   font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Styling untuk tombol notifikasi agar serasi dengan footer biru */
+.notification-controls {
+  margin-top: 5px;
+}
+
+.btn-notif {
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 6px 16px;
+  border-radius: 20px; /* Membuat tombol lebih bulat/modern */
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background-color: white;
+    color: var.$secondary-color;
+  }
+
+  /* Style khusus tombol unsubscribe */
+  &.active {
+    border-color: #ff6b6b;
+    color: #ff6b6b;
+    
+    &:hover {
+      background-color: #ff6b6b;
+      color: white;
+    }
+  }
+}
+
+/* Utility class untuk hide element */
+.d-none {
+  display: none !important;
 }

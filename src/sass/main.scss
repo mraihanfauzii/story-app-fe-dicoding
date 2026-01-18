@@ -12,6 +12,15 @@
 @use 'layouts/dashboard';
 @use 'layouts/add-story';
 
+html {
+  scroll-padding-top: 110px;
+  scroll-behavior: smooth;
+}
+
+body {
+  padding-top: 110px;
+}
+
 .container {
   padding: 16px;
   width: 100%;

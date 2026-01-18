@@ -1,8 +1,4 @@
 class FooterBar extends HTMLElement {
-  constructor() {
-    super();
-  }
-
   connectedCallback() {
     this.render();
   }
@@ -10,7 +6,18 @@ class FooterBar extends HTMLElement {
   render() {
     this.innerHTML = `
       <div class="footer-content">
-        <p>&copy; ${new Date().getFullYear()} Story App. Dibuat untuk Submission Dicoding.</p>
+        <p class="copyright">
+          &copy; 2026 Story App. Dibuat untuk Submission Dicoding.
+        </p>
+        
+        <div class="notification-controls">
+          <button id="subscribeBtn" class="btn-notif d-none">
+            🔔 Aktifkan Notifikasi
+          </button>
+          <button id="unsubscribeBtn" class="btn-notif d-none">
+            🔕 Matikan Notifikasi
+          </button>
+        </div>
       </div>
     `;
   }
