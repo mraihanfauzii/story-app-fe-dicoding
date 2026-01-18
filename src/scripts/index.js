@@ -25,7 +25,7 @@ window.addEventListener('load', async () => {
   if ('serviceWorker' in navigator) {
     try {
       const { Workbox } = await import('workbox-window');
-      const wb = new Workbox('/sw-custom.js', { type: 'module' });
+      const wb = new Workbox('./sw.js'); 
       
       await wb.register(); 
       console.log('SW Registered');

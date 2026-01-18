@@ -1,1 +1,1 @@
-if('serviceWorker' in navigator) navigator.serviceWorker.register('/dev-sw.js?dev-sw', { scope: '/', type: 'module' })
+if('serviceWorker' in navigator) navigator.serviceWorker.register('/story-app-fe-dicoding/dev-sw.js?dev-sw', { scope: '/story-app-fe-dicoding/', type: 'module' })

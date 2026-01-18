@@ -3,11 +3,13 @@ import { resolve } from 'path';
 import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
+  base: '/story-app-fe-dicoding', 
+
   root: resolve(__dirname, 'src'),
   publicDir: resolve(__dirname, 'src/public'), 
   
   build: {
-    outDir: resolve(__dirname, '../dist'),
+    outDir: resolve(__dirname, 'dist'),
     emptyOutDir: true,
   },
   resolve: {
@@ -37,17 +39,17 @@ export default defineConfig({
         start_url: '.',
         icons: [
           {
-            src: '/images/icon-192x192.png',
+            src: 'images/icon-192x192.png',
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: '/images/icon-512x512.png',
+            src: 'images/icon-512x512.png',
             sizes: '512x512',
             type: 'image/png'
           },
           {
-            src: '/images/icon-512x512.png',
+            src: 'images/icon-512x512.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'any maskable'
@@ -55,14 +57,14 @@ export default defineConfig({
         ],
         screenshots: [
           {
-            src: '/images/screenshot-desktop.png',
+            src: 'images/screenshot-desktop.png',
             sizes: '1280x720',
             type: 'image/png',
             form_factor: 'wide',
             label: 'Tampilan Dashboard Desktop'
           },
           {
-            src: '/images/screenshot-mobile.png',
+            src: 'images/screenshot-mobile.png',
             sizes: '360x640',
             type: 'image/png',
             form_factor: 'narrow',
@@ -74,8 +76,8 @@ export default defineConfig({
                 name: "Tambah Cerita",
                 short_name: "Tambah",
                 description: "Upload cerita baru sekarang",
-                url: "/#/add",
-                icons: [{ src: "/images/icon-192x192.png", sizes: "192x192" }]
+                url: "#/add",
+                icons: [{ src: "images/icon-192x192.png", sizes: "192x192" }]
             }
         ]
       }
