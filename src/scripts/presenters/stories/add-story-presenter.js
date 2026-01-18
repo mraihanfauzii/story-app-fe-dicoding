@@ -116,7 +116,8 @@ class AddStoryPresenter {
     
             await this._model.addStory(formData);
             alert('Cerita berhasil diupload!');
-            window.location.hash = '#/';
+            
+            window.location.href = './index.html#/';
         }
 
       } catch (error) {

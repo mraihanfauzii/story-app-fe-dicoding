@@ -4,7 +4,7 @@ class DashboardView {
   getTemplate() {
     return `
       <div class="content-container">
-        <h2 class="content-title">Daftar Cerita</h2>
+        <h1 class="content-title">Daftar Cerita</h1>
         
         <div class="filter-container">
           <input 

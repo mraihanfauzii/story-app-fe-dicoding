@@ -2,7 +2,7 @@ class FavoriteView {
   getTemplate() {
     return `
       <div class="content-container">
-        <h2 class="content-title">Cerita Tersimpan (Offline)</h2>
+        <h1 class="content-title">Cerita Tersimpan (Offline)</h1>
         <div id="favorite-list" class="stories-grid"></div>
       </div>
     `;
