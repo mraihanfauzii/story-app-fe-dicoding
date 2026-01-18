@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/story-app-fe-dicoding/sw.js', { scope: '/story-app-fe-dicoding/' })})}
